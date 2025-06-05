@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-time LipSync AI Client</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Real-time LipSync AI WebSocket Client</h1>
+
+        <div class="left-panel">
+            <div class="input-group">
+                <label for="imageInput">Select Image:</label>
+                <input type="file" id="imageInput" accept="image/png, image/jpeg, image/webp">
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="enhanceFaceCheckbox" checked>
+                <label for="enhanceFaceCheckbox">Enhance Face (GFPGAN)</label>
+            </div>
+            <button id="startLipSyncButton" onclick="startLipSync()">1. Send Image & Initialize</button>
+            <button id="startRecordingButton" onclick="startRecording()" disabled>2. Start Recording Audio</button>
+            <button id="stopRecordingButton" onclick="stopRecording()" disabled>3. Stop Recording Audio</button>
+            <div id="notification" class="notification-message"></div>
+
+            <div class="audio-playback-section">
+                <h2>Recorded Audio Playback</h2>
+                <audio id="recordedAudioPlayback" controls></audio>
+                <button id="playRecordedAudioButton" onclick="playRecordedAudio()" disabled>Play Recorded Audio</button>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <h2>Live Output Video</h2>
+            <video id="outputVideo" controls autoplay muted></video>
+            <p class="video-note">Video will start playing as segments are generated. Audio will be synchronized.</p>
+        </div>
+    </div>
+
+    <script src="static/script.js"></script>
+</body>
+</html>

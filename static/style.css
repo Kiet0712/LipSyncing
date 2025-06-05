@@ -1,0 +1,174 @@
+/* static/style.css */
+
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #28a745;
+    --danger-color: #dc3545;
+    --text-color: #333;
+    --bg-light: #f8f9fa;
+    --bg-white: #ffffff;
+    --border-color: #dee2e6;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: var(--bg-light);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items to the top */
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px; /* Increased max-width significantly for larger video */
+    background-color: var(--bg-white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px var(--shadow-light);
+    text-align: center;
+    margin-top: 50px;
+    display: grid; /* Use Grid for layout */
+    grid-template-columns: 1fr; /* Default to single column for smaller screens */
+    gap: 30px; /* Space between grid items */
+}
+
+@media (min-width: 768px) {
+    .container {
+        grid-template-columns: 1fr 1.5fr; /* Left panel 1 part, Right panel (video) 1.5 parts */
+        text-align: left; /* Align text left within columns */
+    }
+}
+
+h1 {
+    grid-column: 1 / -1; /* Span across all columns in grid */
+    color: var(--primary-color);
+    margin-bottom: 0;
+    font-weight: 700;
+    text-align: center;
+}
+
+.left-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.right-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center; /* Center items horizontally within right panel */
+}
+
+.right-panel h2 {
+    color: var(--primary-color);
+    margin-bottom: 0;
+}
+
+.video-note {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.input-group label {
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-color);
+}
+
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.checkbox-group label {
+    margin-left: 10px;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+button {
+    padding: 12px 25px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    margin-top: 10px;
+}
+
+button:hover:not(:disabled) {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Notification styling */
+.notification-message {
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-weight: bold;
+    text-align: center;
+    min-height: 40px; /* Ensure a consistent height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.notification-hidden {
+    opacity: 0;
+}
+
+#outputVideo {
+    width: 100%; /* Make video take full width of its panel */
+    max-width: 640px; /* Set a max-width for the video to prevent it from getting too large */
+    height: auto;
+    border: 2px solid var(--primary-color);
+    border-radius: 12px;
+    background-color: black;
+    display: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.status-message { background-color: #e9ecef; color: #666; } /* Default info style for notifications */
+.error-message { background-color: #f8d7da; color: var(--danger-color); }
+.success-message { background-color: #d4edda; color: var(--secondary-color); }
+.info-message { background-color: #d1ecf1; color: var(--primary-color); }
