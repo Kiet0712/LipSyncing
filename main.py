@@ -313,7 +313,7 @@ async def _handle_audio_chunking_and_enqueue(websocket: WebSocket, client_state:
     session_id = client_state["session_id"]
     audio_queue_key = client_state["audio_queue_key"]
     audio_stream_ended_key = client_state["audio_stream_ended_key"]
-    AUDIO_SEGMENT_SIZE_BYTES = 4000
+    AUDIO_SEGMENT_SIZE_BYTES = 256000
 
     logger.info(f"Starting audio chunking and enqueue task for session {session_id}")
     try:
